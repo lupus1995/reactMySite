@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Home = () => {
   const [posts, setPosts] = useState<{ title: string }[]>([]);
   useEffect(() => {
-    fetch('http://jsonplaceholder.typicode.com/posts')
+    fetch("http://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then(setPosts);
   }, []);
