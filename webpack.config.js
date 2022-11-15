@@ -2,6 +2,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const HTMLInlineCSSWebpackPlugin =
+  require("html-inline-css-webpack-plugin").default;
 
 const isDevelopment = process.env.NODE_ENV === "development";
 const isProduction = process.env.NODE_ENV === "production";
@@ -31,9 +33,9 @@ module.exports = {
   target: "web",
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
-    // папка utils здесь приводится в качестве примера
     alias: {
       utils: path.resolve(__dirname, "src/utils"),
+      commons: path.resolve(__dirname, "src/commons"),
     },
   },
   module: {
@@ -65,6 +67,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
     }),
+    new HTMLInlineCSSWebpackPlugin(),
     new ForkTsCheckerWebpackPlugin({
       eslint: {
         enabled: true,

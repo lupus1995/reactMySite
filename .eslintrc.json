@@ -11,6 +11,7 @@
     "extends": [
         "airbnb-typescript",
         "plugin:prettier/recommended",
+        "plugin:react-hooks/recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:import/recommended"
@@ -29,7 +30,33 @@
         "react-hooks/exhaustive-deps": "warn",
         "react/prop-types": "off",
         "import/extensions": "off",
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "@typescript-eslint/naming-convention": "off",
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal"
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "react",
+                        "group": "external",
+                        "position": "before"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": [
+                    "react"
+                ],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ]
     },
     "settings": {
         "react": {
